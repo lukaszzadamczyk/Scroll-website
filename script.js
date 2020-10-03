@@ -14,9 +14,6 @@ document.addEventListener('mousewheel', function (event) {
 
     const direction = event.wheelDelta < 0 ? 1 : -1;
     scroll(direction)
-
-
-
 })
 
 function scroll(direction) {
