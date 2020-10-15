@@ -11,10 +11,10 @@
         height: 10px;
         margin-top: 10px;
         border-radius: 50%;
-        background-color: rgba(100, 14, 14, 0.6);
+        background-color: rgb(190, 184, 184);
         cursor: pointer;
         &--active{
-            background-color:darken(rgba(100, 14, 14, 0.6), 20%);
+            background-color:lighten(rgb(190, 184, 184), 40%);
         }
     }
 }

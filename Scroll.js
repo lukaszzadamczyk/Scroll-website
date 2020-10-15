@@ -22,8 +22,8 @@ class Scroll {
     const vissible = elemTop >= 0 && elemBottom <= window.innerHeight;
 
     return vissible;
-  }
-  listenScroll(event) {
+  };
+  listenScroll(event){
     if (this.isScroll) return;
     this.isScroll = true;
 
@@ -34,9 +34,9 @@ class Scroll {
     const direction = event.deltaY > 0 ? 1 : -1;
 
     this.scroll(direction);
-  }
+  };
 
-  scroll(direction) {
+  scroll(direction){
     if (direction === 1) {
       const isLastSection = this.sectionIndex === this.sections.length - 1;
       if (isLastSection) return;
@@ -47,7 +47,7 @@ class Scroll {
 
     this.sectionIndex = this.sectionIndex + direction;
     this.scrollToCurrentSection();
-  }
+  };
 
   scrollToCurrentSection() {
     this.selectActiveNav();
@@ -55,7 +55,7 @@ class Scroll {
       behavior: "smooth",
       block: "start",
     });
-  }
+  };
 
   changeNavigation() {
     this.navigation = document.createElement("aside");
@@ -79,9 +79,9 @@ class Scroll {
     document.body.appendChild(this.navigation);
 
     this.selectActiveNav();
-  }
+  };
 
-  selectActiveNav() {
+  selectActiveNav(){
     if (this.navigation) {
       const navigation = this.navigation.querySelectorAll("li");
 
@@ -93,5 +93,5 @@ class Scroll {
         }
       });
     }
-  }
+  };
 }

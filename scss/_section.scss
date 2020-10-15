@@ -1,12 +1,27 @@
 .section {
+    position: relative;
     min-height: 100vh;
-
+    background-image: url('../img/work-1627703_1280.jpg');
+    &--2{
+        background-image: url('../img/laptop-5547207_1280.jpg');
+    }
+    &--3{
+        background-image: url('../img/woman-5576945_1280.jpg');
+    }
+    &--4{
+        background-image: url('../img/hacker-5471975_1280.png');
+    }
     &__img{
         max-width: 100%;
     }
 
     &__text {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%,-50%);
         max-width: 75%;
         margin: 20px auto;
+        color: white;
     }
 }
