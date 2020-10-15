@@ -1,3 +1,3 @@
-const scroller = new Scroll('#main')
+const scroller = new Scroll("#main");
 
-document.addEventListener('mousewheel', scroller.listenScroll)
+document.addEventListener("wheel", (event) => scroller.listenScroll(event));

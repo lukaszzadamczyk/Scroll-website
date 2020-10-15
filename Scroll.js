@@ -14,7 +14,7 @@ class Scroll {
     this.changeNavigation();
   }
 
-  isScrolledIntoView = (element) => {
+  isScrolledIntoView(element) {
     const rect = element.getBoundingClientRect();
     const elemTop = rect.top;
     const elemBottom = rect.bottom;
@@ -22,8 +22,8 @@ class Scroll {
     const vissible = elemTop >= 0 && elemBottom <= window.innerHeight;
 
     return vissible;
-  };
-  listenScroll = (event) => {
+  }
+  listenScroll(event) {
     if (this.isScroll) return;
     this.isScroll = true;
 
@@ -31,12 +31,12 @@ class Scroll {
       this.isScroll = false;
     }, 1000);
 
-    const direction = event.wheelDelta < 0 ? 1 : -1;
+    const direction = event.deltaY > 0 ? 1 : -1;
 
     this.scroll(direction);
-  };
+  }
 
-  scroll = (direction) => {
+  scroll(direction) {
     if (direction === 1) {
       const isLastSection = this.sectionIndex === this.sections.length - 1;
       if (isLastSection) return;
@@ -47,17 +47,17 @@ class Scroll {
 
     this.sectionIndex = this.sectionIndex + direction;
     this.scrollToCurrentSection();
-  };
+  }
 
-  scrollToCurrentSection = () => {
+  scrollToCurrentSection() {
     this.selectActiveNav();
     this.sections[this.sectionIndex].scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
-  };
+  }
 
-  changeNavigation = () => {
+  changeNavigation() {
     this.navigation = document.createElement("aside");
     this.navigation.setAttribute("class", "nav");
     const list = document.createElement("ul");
@@ -79,9 +79,9 @@ class Scroll {
     document.body.appendChild(this.navigation);
 
     this.selectActiveNav();
-  };
+  }
 
-  selectActiveNav = () => {
+  selectActiveNav() {
     if (this.navigation) {
       const navigation = this.navigation.querySelectorAll("li");
 
@@ -93,5 +93,5 @@ class Scroll {
         }
       });
     }
-  };
+  }
 }
