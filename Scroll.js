@@ -10,6 +10,8 @@ class Scroll {
     this.sectionIndex = sectionIndex < 0 ? 0 : sectionIndex;
 
     this.isScroll = false;
+
+    this.changeNavigation();
   }
 
   isScrolledIntoView = (element) => {
@@ -48,9 +50,48 @@ class Scroll {
   };
 
   scrollToCurrentSection = () => {
+    this.selectActiveNav();
     this.sections[this.sectionIndex].scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
+  };
+
+  changeNavigation = () => {
+    this.navigation = document.createElement("aside");
+    this.navigation.setAttribute("class", "nav");
+    const list = document.createElement("ul");
+    list.setAttribute("class", "nav__list");
+
+    this.sections.forEach((section, index) => {
+      const listItem = document.createElement("li");
+      listItem.setAttribute("class", "nav__listItem");
+
+      listItem.addEventListener("click", () => {
+        this.sectionIndex = index;
+
+        this.scrollToCurrentSection();
+      });
+
+      list.appendChild(listItem);
+    });
+    this.navigation.appendChild(list);
+    document.body.appendChild(this.navigation);
+
+    this.selectActiveNav();
+  };
+
+  selectActiveNav = () => {
+    if (this.navigation) {
+      const navigation = this.navigation.querySelectorAll("li");
+
+      navigation.forEach((listItem, index) => {
+        if (index === this.sectionIndex) {
+          listItem.classList.add("nav__listItem--active");
+        } else {
+          listItem.classList.remove("nav__listItem--active");
+        }
+      });
+    }
   };
 }

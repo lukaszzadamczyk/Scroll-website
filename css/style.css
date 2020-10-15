@@ -23,4 +23,29 @@ html {
   max-width: 75%;
   margin: 20px auto;
 }
+
+.nav {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.nav__list {
+  list-style: none;
+}
+
+.nav__listItem {
+  width: 10px;
+  height: 10px;
+  margin-top: 10px;
+  border-radius: 50%;
+  background-color: rgba(100, 14, 14, 0.6);
+  cursor: pointer;
+}
+
+.nav__listItem--active {
+  background-color: rgba(11, 1, 1, 0.6);
+}
 /*# sourceMappingURL=style.css.map */
